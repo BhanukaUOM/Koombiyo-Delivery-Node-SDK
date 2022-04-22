@@ -1,0 +1,21 @@
+{
+    "compilerOptions": {
+      "module": "commonjs",
+      "noImplicitReturns": true,
+      "noUnusedLocals": true,
+      "outDir": "build",
+      "sourceMap": true,
+      "strict": true,
+      "target": "es2017",
+      "skipLibCheck": true,
+      "strictNullChecks": false,
+      "resolveJsonModule": true,
+      "declaration": true,
+      "declarationMap": true,
+      "declarationDir": "./build",
+    },
+    "lib": ["es2017"],
+    "compileOnSave": true,
+    "include": ["src/index.ts"]
+  }
+  

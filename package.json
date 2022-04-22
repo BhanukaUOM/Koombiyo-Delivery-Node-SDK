@@ -1,0 +1,50 @@
+{
+  "name": "koombiyo-sdk",
+  "version": "1.0.0",
+  "description": "Koombiyo Delivery API Client for NodeJS written in TypeScript",
+  "main": "build/index.js",
+  "scripts": {
+    "test": "mocha **/*.test.js",
+    "npm-patch": "npm version patch --git-tag-version false && git add package.json",
+    "build": "tsc"
+  },
+  "dependencies": {
+    "axios": "^0.26.1"
+  },
+  "devDependencies": {
+    "@types/node": "17.0.23",
+    "husky": "4.3.8",
+    "mocha": "8.2.1",
+    "nock": "12.0.3",
+    "ts-node": "10.7.0",
+    "typescript": "4.6.3"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run npm-patch && npm run test"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BhanukaUOM/Koombiyo-Delivery-Node-SDK.git"
+  },
+  "keywords": [
+    "koombiyo",
+    "delivery",
+    "nodejs",
+    "api",
+    "javascript",
+    "typescript",
+    "sdk",
+    "client"
+  ],
+  "author": {
+    "name": "Bhanuka Rathnayaka",
+    "email": "bhanuka2017@gmail.com"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/BhanukaUOM/Koombiyo-Delivery-Node-SDK/issues"
+  },
+  "homepage": "https://github.com/BhanukaUOM/Koombiyo-Delivery-Node-SDK#readme"
+}
