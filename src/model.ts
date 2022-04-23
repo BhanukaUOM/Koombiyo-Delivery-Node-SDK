@@ -4452,7 +4452,6 @@ export interface KoombiyoPikcUpRequest {
   qty: number;
 }
 
-
 export interface OrderHistory {
   status_id: KoombiyoDeliveryStatusType;
   comments: string;
@@ -4460,6 +4459,7 @@ export interface OrderHistory {
   status: KoombiyoOrderStatusType;
   remark?: string;
 }
+
 export interface OrderHistoryResponse {
   order_history: OrderHistory[];
 }
@@ -4471,6 +4471,7 @@ export interface ReturnNotesResponse {
 export interface ReturnItemsResponse {
   return_items: any[];
 }
+
 export interface OrderTracking {
   waybill_id: string,
   weight: string,
@@ -4488,6 +4489,7 @@ export interface OrderTracking {
   orderstatus: KoombiyoOrderStatusType,
   deliverystatus: KoombiyoDeliveryStatusType
 }
+
 export interface OrderTrackingResponse {
   cust_orders: OrderTracking[];
   rowcount: number;
