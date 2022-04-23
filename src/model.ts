@@ -9,6 +9,27 @@ export enum KoobiyoVehicleType {
   "LORRY" = "Lorry"
 }
 
+export enum KoobiyoOrderStatusType {
+  "PROCESSING" = "Processing",
+  "COLLECTED" = "Collected by Koombiyo",
+  "RECEIVED_AT_WAREHOUSE" = "Received at Warehouse",
+  "DISPATCHED_TO_DESTINATION" = "Dispatch to Destination",
+  "RECEIVED_AT_DESTINATION" = "Received at Destination ",
+  "DISPATCHED" = "Out for Delivery",
+  "DELIVERED" = "Delivered",
+  "CLIENT_RECEIVED" = "Client Received"
+}
+
+export enum KoobiyoDeliveryStatusType {
+  "PROCESSING" = "1",
+  "COLLECTED" = "2",
+  "RECEIVED_AT_WAREHOUSE" = "14",
+  "DISPATCHED_TO_DESTINATION" = "3",
+  "RECEIVED_AT_DESTINATION" = "4",
+  "DISPATCHED" = "5",
+  "DELIVERED" = "6",
+  "CLIENT_RECEIVED" = "15"
+}
 export interface KoobiyoRespose {
   status: KoobiyoStatusType,
   message: string;
@@ -39,11 +60,11 @@ export interface KoobiyoPikcUpRequest {
 
 
 export interface OrderHistory {
-  status_id:  string;
-  comments:  string;
-  date:  string;
-  status:  string;
-  remark?:  string;
+  status_id: KoobiyoDeliveryStatusType;
+  comments: string;
+  date: string;
+  status: KoobiyoOrderStatusType;
+  remark?: string;
 }
 export interface OrderHistoryResponse {
   order_history: OrderHistory[];
@@ -70,8 +91,8 @@ export interface OrderTracking {
   recever: string,
   description: string,
   district: string,
-  orderstatus: string,
-  deliverystatus: string
+  orderstatus: KoobiyoOrderStatusType,
+  deliverystatus: KoobiyoDeliveryStatusType
 }
 export interface OrderTrackingResponse {
   cust_orders: OrderTracking[];
