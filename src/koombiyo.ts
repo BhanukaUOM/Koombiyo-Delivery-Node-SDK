@@ -35,7 +35,7 @@ class Koombiyo {
   };
 
   static GenerateTrackingURL = (waybillid: number, receiverPhoneNo: string) => {
-    return `${Koombiyo._trackingURL}?id=${waybillid}&phone=${receiverPhoneNo}`
+    return `${Koombiyo._trackingURL}?id=${encodeURIComponent(waybillid)}&phone=${encodeURIComponent(receiverPhoneNo)}`
   }
 
   static AddNewOrder = async (newOrderRequest: KoobiyoNewOrderRequest): Promise<KoobiyoRespose> => {
