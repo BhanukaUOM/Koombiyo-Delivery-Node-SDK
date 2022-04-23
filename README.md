@@ -7,6 +7,10 @@
 
 Koombiyo Delivery API Client for NodeJS written in TypeScript
 
+[![Koombiyo Delivery Logo](https://koombiyodelivery.lk/assets/img/logo.png)](https://koombiyodelivery.lk)
+[https://koombiyodelivery.lk](https://koombiyodelivery.lk)
+
+<hr/>
 
 ## Install
 
@@ -26,15 +30,15 @@ Koombiyo.init(KOOMBIYO_API_KEY);
 ### Add New Order
 
 ```
-import { Koombiyo } from 'koombiyo-sdk';
+import { Koombiyo, Types } from 'koombiyo-sdk';
 
 Koombiyo.AddNewOrder({
   orderWaybillid: 123,
   orderNo: 123,
   receiverName: 'Kamal Perera',
   receiverStreet: '123, Kohuwala, Nugegoda',
-  receiverDistrict: 23,
-  receiverCity: 1298,
+  receiverDistrict: Types.KoombiyoDeliveryDistrictList.Colombo,
+  receiverCity: Types.KoombiyoDeliveryCityList.KOHUWALA,
   receiverPhone: "0777123456",
   description: "1 x USB Drive",
   spclNote: '-',
@@ -102,6 +106,10 @@ Koombiyo.GetOrderHistory(KOOMBIYO_WAYBILLID)
   .catch(err => console.error('err', err));
 ```
 ## Release Notes
+> #### v1.2.0
+> 
+> -  Added Koombiyo City List Support
+>
 > #### v1.1.0
 > 
 > -  Added Support for Order Tracking URL Generation
