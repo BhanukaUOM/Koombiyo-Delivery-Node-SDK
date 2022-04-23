@@ -1,6 +1,6 @@
 {
   "name": "koombiyo-sdk",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Koombiyo Delivery API Client for NodeJS written in TypeScript",
   "main": "build/index.js",
   "scripts": {
@@ -9,7 +9,7 @@
     "build": "tsc"
   },
   "dependencies": {
-    "axios": "^0.26.1"
+    "axios": "0.26.1"
   },
   "devDependencies": {
     "@types/node": "17.0.23",

@@ -44,6 +44,15 @@ Koombiyo.AddNewOrder({
   .catch(err => console.error('err', err));
 ```
 
+### Generate Order Tracking URL
+
+```
+import { Koombiyo } from 'koombiyo-sdk';
+
+const trackingURL = Koombiyo.GenerateTrackingURL(KOOMBIYO_WAYBILLID, DELIVERY_RECEIVER_PHONE_NO);
+console.log('Tracking URL', trackingURL);
+```
+
 ### Add PickUp Request
 
 ```
@@ -92,7 +101,10 @@ Koombiyo.GetOrderHistory(KOOMBIYO_WAYBILLID)
   .catch(err => console.error('err', err));
 ```
 ## Release Notes
-
+> #### v1.0.1
+> 
+> -  Added Support for Order Tracking URL Generation
+>
 > #### v1.0.0
 > 
 > -  Initial Release

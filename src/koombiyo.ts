@@ -1,8 +1,9 @@
 import axios from 'axios';
-import { KoobiyoNewOrderRequest, KoobiyoPikcUpRequest, KoobiyoRespose, OrderHistoryResponse, OrderTracking, OrderTrackingResponse, ReturnItemsResponse, ReturnNotesResponse } from './model';
+import { KoobiyoNewOrderRequest, KoobiyoPikcUpRequest, KoobiyoRespose, KoobiyoStatusType, OrderHistoryResponse, OrderTracking, OrderTrackingResponse, ReturnItemsResponse, ReturnNotesResponse } from './model';
 
 class Koombiyo {
   private static _apiHost: string = "https://application.koombiyodelivery.lk/api";
+  private static _trackingURL: string = "https://koombiyodelivery.lk/Track/track_id";
   private static _apiKey: string;
   private static _debug: boolean;
 
@@ -26,11 +27,16 @@ class Koombiyo {
 
       const data = await api_response.data;
       if (Koombiyo._debug) console.log('Koobiyo Response:', data);
+      if (data.status === KoobiyoStatusType.ERROR) throw Error(data.message);
       return data;
     } catch (err) {
       throw err;
     }
   };
+
+  static GenerateTrackingURL = (waybillid: number, receiverPhoneNo: string) => {
+    return `${Koombiyo._trackingURL}?id=${waybillid}&phone=${receiverPhoneNo}`
+  }
 
   static AddNewOrder = async (newOrderRequest: KoobiyoNewOrderRequest): Promise<KoobiyoRespose> => {
     try {
