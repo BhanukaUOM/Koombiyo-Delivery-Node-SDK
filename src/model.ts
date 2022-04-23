@@ -37,8 +37,16 @@ export interface KoobiyoPikcUpRequest {
   qty: number;
 }
 
+
+export interface OrderHistory {
+  status_id:  string;
+  comments:  string;
+  date:  string;
+  status:  string;
+  remark?:  string;
+}
 export interface OrderHistoryResponse {
-  order_history: any[];
+  order_history: OrderHistory[];
 }
 
 export interface ReturnNotesResponse {
@@ -48,11 +56,6 @@ export interface ReturnNotesResponse {
 export interface ReturnItemsResponse {
   return_items: any[];
 }
-
-export interface OrderHistoryResponse {
-  order_history: any[];
-}
-
 export interface OrderTracking {
   waybill_id: string,
   weight: string,

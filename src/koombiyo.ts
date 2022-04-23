@@ -14,6 +14,7 @@ class Koombiyo {
 
   static _koobiyoAPIFn = async (endpoint: string, body: object = {}): Promise<any> => {
     if (Koombiyo._debug) console.log('Koobiyo Req:', endpoint, body);
+    if (!Koombiyo._apiKey) throw Error('Please Initialize Koombiyo Client. Use "Koombiyo.init(KOOMBIYO_API_KEY)"')
 
     try {
       const params = new URLSearchParams();
@@ -27,7 +28,6 @@ class Koombiyo {
 
       const data = await api_response.data;
       if (Koombiyo._debug) console.log('Koobiyo Response:', data);
-      if (data.status === KoobiyoStatusType.ERROR) throw Error(data.message);
       return data;
     } catch (err) {
       throw err;
@@ -41,6 +41,7 @@ class Koombiyo {
   static AddNewOrder = async (newOrderRequest: KoobiyoNewOrderRequest): Promise<KoobiyoRespose> => {
     try {
       const res = await Koombiyo._koobiyoAPIFn('Addorders/users', newOrderRequest);
+      if (res.status !== KoobiyoStatusType.SUCCESS) throw Error(res.message || res);
       return res;
     } catch (err) {
       throw err;
@@ -50,6 +51,7 @@ class Koombiyo {
   static AddPickupRequest = async (pickUpReq: KoobiyoPikcUpRequest): Promise<KoobiyoRespose> => {
     try {
       const res = await Koombiyo._koobiyoAPIFn('Pickups/users', pickUpReq);
+      if (res.status !== KoobiyoStatusType.SUCCESS) throw Error(res.message || res);
       return res;
     } catch (err) {
       throw err;
