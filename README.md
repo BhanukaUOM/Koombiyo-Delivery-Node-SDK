@@ -102,7 +102,7 @@ Koombiyo.GetOrderHistory(KOOMBIYO_WAYBILLID)
   .catch(err => console.error('err', err));
 ```
 ## Release Notes
-> #### v1.0.1
+> #### v1.1.0
 > 
 > -  Added Support for Order Tracking URL Generation
 >
