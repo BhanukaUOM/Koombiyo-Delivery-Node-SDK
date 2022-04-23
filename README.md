@@ -44,22 +44,13 @@ Koombiyo.AddNewOrder({
   .catch(err => console.error('err', err));
 ```
 
-### Generate Order Tracking URL
-
-```
-import { Koombiyo } from 'koombiyo-sdk';
-
-const trackingURL = Koombiyo.GenerateTrackingURL(KOOMBIYO_WAYBILLID, DELIVERY_RECEIVER_PHONE_NO);
-console.log('Tracking URL', trackingURL);
-```
-
 ### Add PickUp Request
 
 ```
 import { Koombiyo, Types } from 'koombiyo-sdk';
 
 Koombiyo.AddPickupRequest({
-  vehicleType: Types.KoobiyoVehicleType.BIKE,
+  vehicleType: Types.KoombiyoVehicleType.BIKE,
   pickup_remark: '-',
   pickup_address: '123, Kohuwala, Nugegoda',
   phone: '0777123456',
@@ -69,6 +60,16 @@ Koombiyo.AddPickupRequest({
 })
   .then(res => console.log('res', res))
   .catch(err => console.error('err', err));
+```
+
+
+### Generate Order Tracking URL
+
+```
+import { Koombiyo } from 'koombiyo-sdk';
+
+const trackingURL = Koombiyo.GenerateTrackingURL(KOOMBIYO_WAYBILLID, DELIVERY_RECEIVER_PHONE_NO);
+console.log('Tracking URL', trackingURL);
 ```
 
 ### Track Order

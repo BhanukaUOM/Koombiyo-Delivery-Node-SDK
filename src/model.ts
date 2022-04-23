@@ -1,15 +1,15 @@
-export enum KoobiyoStatusType {
+export enum KoombiyoStatusType {
   "SUCCESS" = "success",
   "ERROR" = "error"
 }
 
-export enum KoobiyoVehicleType {
+export enum KoombiyoVehicleType {
   "BIKE" = "Bike",
   "3WHEEL" = "Three wheel",
   "LORRY" = "Lorry"
 }
 
-export enum KoobiyoOrderStatusType {
+export enum KoombiyoOrderStatusType {
   "PROCESSING" = "Processing",
   "COLLECTED" = "Collected by Koombiyo",
   "RECEIVED_AT_WAREHOUSE" = "Received at Warehouse",
@@ -20,7 +20,7 @@ export enum KoobiyoOrderStatusType {
   "CLIENT_RECEIVED" = "Client Received"
 }
 
-export enum KoobiyoDeliveryStatusType {
+export enum KoombiyoDeliveryStatusType {
   "PROCESSING" = "1",
   "COLLECTED" = "2",
   "RECEIVED_AT_WAREHOUSE" = "14",
@@ -30,12 +30,12 @@ export enum KoobiyoDeliveryStatusType {
   "DELIVERED" = "6",
   "CLIENT_RECEIVED" = "15"
 }
-export interface KoobiyoRespose {
-  status: KoobiyoStatusType,
+export interface KoombiyoRespose {
+  status: KoombiyoStatusType,
   message: string;
 }
 
-export interface KoobiyoNewOrderRequest {
+export interface KoombiyoNewOrderRequest {
   orderWaybillid: number;
   orderNo: number;
   receiverName: string;
@@ -48,8 +48,8 @@ export interface KoobiyoNewOrderRequest {
   getCod: number;
 }
 
-export interface KoobiyoPikcUpRequest {
-  vehicleType: KoobiyoVehicleType;
+export interface KoombiyoPikcUpRequest {
+  vehicleType: KoombiyoVehicleType;
   pickup_remark: string;
   pickup_address: string;
   latitude: number;
@@ -60,10 +60,10 @@ export interface KoobiyoPikcUpRequest {
 
 
 export interface OrderHistory {
-  status_id: KoobiyoDeliveryStatusType;
+  status_id: KoombiyoDeliveryStatusType;
   comments: string;
   date: string;
-  status: KoobiyoOrderStatusType;
+  status: KoombiyoOrderStatusType;
   remark?: string;
 }
 export interface OrderHistoryResponse {
@@ -91,8 +91,8 @@ export interface OrderTracking {
   recever: string,
   description: string,
   district: string,
-  orderstatus: KoobiyoOrderStatusType,
-  deliverystatus: KoobiyoDeliveryStatusType
+  orderstatus: KoombiyoOrderStatusType,
+  deliverystatus: KoombiyoDeliveryStatusType
 }
 export interface OrderTrackingResponse {
   cust_orders: OrderTracking[];

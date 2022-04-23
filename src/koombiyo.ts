@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { KoobiyoNewOrderRequest, KoobiyoPikcUpRequest, KoobiyoRespose, KoobiyoStatusType, OrderHistoryResponse, OrderTracking, OrderTrackingResponse, ReturnItemsResponse, ReturnNotesResponse } from './model';
+import { KoombiyoNewOrderRequest, KoombiyoPikcUpRequest, KoombiyoRespose, KoombiyoStatusType, OrderHistoryResponse, OrderTracking, OrderTrackingResponse, ReturnItemsResponse, ReturnNotesResponse } from './model';
 
 class Koombiyo {
   private static _apiHost: string = "https://application.koombiyodelivery.lk/api";
@@ -12,8 +12,8 @@ class Koombiyo {
     this._debug = debug;
   }
 
-  static _koobiyoAPIFn = async (endpoint: string, body: object = {}): Promise<any> => {
-    if (Koombiyo._debug) console.log('Koobiyo Req:', endpoint, body);
+  static _koombiyoAPIFn = async (endpoint: string, body: object = {}): Promise<any> => {
+    if (Koombiyo._debug) console.log('Koombiyo Req:', endpoint, body);
     if (!Koombiyo._apiKey) throw Error('Please Initialize Koombiyo Client. Use "Koombiyo.init(KOOMBIYO_API_KEY)"')
 
     try {
@@ -27,7 +27,7 @@ class Koombiyo {
       );
 
       const data = await api_response.data;
-      if (Koombiyo._debug) console.log('Koobiyo Response:', data);
+      if (Koombiyo._debug) console.log('Koombiyo Response:', data);
       return data;
     } catch (err) {
       throw err;
@@ -38,20 +38,20 @@ class Koombiyo {
     return `${Koombiyo._trackingURL}?id=${encodeURIComponent(waybillid)}&phone=${encodeURIComponent(receiverPhoneNo)}`
   }
 
-  static AddNewOrder = async (newOrderRequest: KoobiyoNewOrderRequest): Promise<KoobiyoRespose> => {
+  static AddNewOrder = async (newOrderRequest: KoombiyoNewOrderRequest): Promise<KoombiyoRespose> => {
     try {
-      const res = await Koombiyo._koobiyoAPIFn('Addorders/users', newOrderRequest);
-      if (res.status !== KoobiyoStatusType.SUCCESS) throw Error(res.message || res);
+      const res = await Koombiyo._koombiyoAPIFn('Addorders/users', newOrderRequest);
+      if (res.status !== KoombiyoStatusType.SUCCESS) throw Error(res.message || res);
       return res;
     } catch (err) {
       throw err;
     }
   }
 
-  static AddPickupRequest = async (pickUpReq: KoobiyoPikcUpRequest): Promise<KoobiyoRespose> => {
+  static AddPickupRequest = async (pickUpReq: KoombiyoPikcUpRequest): Promise<KoombiyoRespose> => {
     try {
-      const res = await Koombiyo._koobiyoAPIFn('Pickups/users', pickUpReq);
-      if (res.status !== KoobiyoStatusType.SUCCESS) throw Error(res.message || res);
+      const res = await Koombiyo._koombiyoAPIFn('Pickups/users', pickUpReq);
+      if (res.status !== KoombiyoStatusType.SUCCESS) throw Error(res.message || res);
       return res;
     } catch (err) {
       throw err;
@@ -60,7 +60,7 @@ class Koombiyo {
 
   static GetTrackOrderById = async (waybillid: string): Promise<OrderTracking> => {
     try {
-      const res: OrderTrackingResponse = await Koombiyo._koobiyoAPIFn('Allorders/users', {
+      const res: OrderTrackingResponse = await Koombiyo._koombiyoAPIFn('Allorders/users', {
         waybillid: waybillid,
         offset: 0,
         limit: 1
@@ -73,7 +73,7 @@ class Koombiyo {
 
   static GetAllOrdersTracking = async (page = 1, pageSize = 10): Promise<OrderTrackingResponse> => {
     try {
-      const res = await Koombiyo._koobiyoAPIFn('Allorders/users', {
+      const res = await Koombiyo._koombiyoAPIFn('Allorders/users', {
         offset: (page - 1) * pageSize,
         limit: pageSize
       });
@@ -85,7 +85,7 @@ class Koombiyo {
 
   static GetOrderHistory = async (waybillid: string): Promise<OrderHistoryResponse> => {
     try {
-      const res = await Koombiyo._koobiyoAPIFn('Orderhistory/users', {
+      const res = await Koombiyo._koombiyoAPIFn('Orderhistory/users', {
         waybillid: waybillid
       });
       return res;
@@ -94,9 +94,9 @@ class Koombiyo {
     }
   }
 
-  static ReturnReceive = async (waybillid: string): Promise<KoobiyoRespose> => {
+  static ReturnReceive = async (waybillid: string): Promise<KoombiyoRespose> => {
     try {
-      const res = await Koombiyo._koobiyoAPIFn('Returnreceive/users', {
+      const res = await Koombiyo._koombiyoAPIFn('Returnreceive/users', {
         orderWaybillid: waybillid
       });
       return res;
@@ -107,7 +107,7 @@ class Koombiyo {
 
   static GetAllReturnNotes = async (): Promise<ReturnNotesResponse> => {
     try {
-      const res = await Koombiyo._koobiyoAPIFn('Returnnotes/users');
+      const res = await Koombiyo._koombiyoAPIFn('Returnnotes/users');
       return res;
     } catch (err) {
       throw err;
@@ -116,7 +116,7 @@ class Koombiyo {
 
   static GetReturnItems = async (noteId: string): Promise<ReturnItemsResponse> => {
     try {
-      const res = await Koombiyo._koobiyoAPIFn('Returnitems/users', {
+      const res = await Koombiyo._koombiyoAPIFn('Returnitems/users', {
         noteId: noteId
       });
       return res;
