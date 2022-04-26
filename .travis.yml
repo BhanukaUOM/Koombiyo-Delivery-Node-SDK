@@ -11,6 +11,7 @@ jobs:
       if: branch = main AND type = push
       script:
         - echo "CI/CD Starting for $BRANCH"
+        - npm install codecov -g
         - npm install
         - npm run test
         - npm run build
@@ -18,6 +19,7 @@ jobs:
         - npm publish
       after_success:
         - echo "Deployed Successfully"
+        - codecov
     - stage: PR
       if: type = pull_request
       script:
