@@ -7,8 +7,8 @@ warnings_are_errors: true
 
 jobs:
   include:
-    - stage: Push-Requests
-      if: type = push
+    - stage: Main-Branch-Push-Requests
+      if: branch = main AND type = push
       script:
         - echo "CI/CD Starting for $BRANCH"
         - npm install

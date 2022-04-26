@@ -38,7 +38,7 @@ Koombiyo.AddNewOrder({
   orderNo: 123,
   receiverName: 'Kamal Perera',
   receiverStreet: '123, Kohuwala, Nugegoda',
-  receiverDistrict: Types.KoombiyoDeliveryDistrictList.Colombo,
+  receiverDistrict: Types.KoombiyoDeliveryDistrictList.COLOMBO,
   receiverCity: Types.KoombiyoDeliveryCityList.KOHUWALA,
   receiverPhone: "0777123456",
   description: "1 x USB Drive",
